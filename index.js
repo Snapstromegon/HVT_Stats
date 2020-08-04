@@ -17,7 +17,7 @@ async function loadYears(browser, start, end) {
   const raceYears = [];
   for (let year = start; year <= end; year++) {
     console.time('load Year: ' + year);
-    const raceYear = await RaceYear.loadYear(browser, 2014);
+    const raceYear = await RaceYear.loadYear(browser, year);
     raceYears.push({
       year,
       races: raceYear.raceCount,
