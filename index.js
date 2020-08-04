@@ -5,7 +5,7 @@ async function main() {
   const browser = await puppeteer.launch({ headless: false });
 
   try{
-    console.table(await loadYears(2014, 2020));
+    console.table(await loadYears(browser, 2014, 2020));
   } catch(e){
     console.error(e)
   }
@@ -13,9 +13,9 @@ async function main() {
   await browser.close();
 }
 
-async function loadYears(start, end) {
+async function loadYears(browser, start, end) {
   const raceYears = [];
-  for (let year = 2014; year <= 2014; year++) {
+  for (let year = start; year <= end; year++) {
     console.time('load Year: ' + year);
     const raceYear = await RaceYear.loadYear(browser, 2014);
     raceYears.push({
